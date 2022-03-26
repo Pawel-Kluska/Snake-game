@@ -17,6 +17,7 @@ public class Main extends Application {
         root.setPadding(new Insets(5));
         Field field = new Field(width, height);
         root.getChildren().add(field);
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Snake game");
