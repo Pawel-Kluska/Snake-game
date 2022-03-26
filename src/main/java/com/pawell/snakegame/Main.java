@@ -8,8 +8,9 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    int width = 30, height = 15;
-    public static int block_size = 10;
+    final int width = 60, height = 30;
+    public final static int block_size = 20;
+    final int length = 5;
 
     @Override
     public void start(Stage stage) {
@@ -17,7 +18,7 @@ public class Main extends Application {
         root.setPadding(new Insets(5));
         Field field = new Field(width, height);
         root.getChildren().add(field);
-
+        field.addSnake(new Snake(length, field));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Snake game");

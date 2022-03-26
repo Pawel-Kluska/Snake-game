@@ -1,15 +1,15 @@
 package com.pawell.snakegame;
 
-import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Circle;
 
-public class Block extends Rectangle {
+public class Block extends Circle {
     int posX, posY;
     int oldPosX, oldPosY;
 
     Block previous;
 
     public Block(int posX, int posY, Block previous){
-        super(Main.block_size, Main.block_size);
+        super(Main.block_size/2);
         this.posX = posX;
         this.posY = posY;
         this.previous = previous;

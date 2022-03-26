@@ -7,8 +7,8 @@ public class Snake {
     Block head;
 
     public Snake(int length, Field field){
-        int ipx = field.getWidth() / 2;
-        int ipy = field.getHeight() / 2;
+        int ipx = field.getWid() / 2;
+        int ipy = field.getHei() / 2;
 
         head = new Block(ipx, ipy, null);
         Block previous = head;
