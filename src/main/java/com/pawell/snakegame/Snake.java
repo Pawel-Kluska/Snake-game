@@ -21,4 +21,8 @@ public class Snake {
 
         }
     }
+
+    public void switchDirection(Direction d){
+        head.direction = d;
+    }
 }

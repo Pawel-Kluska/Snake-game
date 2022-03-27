@@ -1,5 +1,6 @@
 package com.pawell.snakegame;
 
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
@@ -22,6 +23,7 @@ public class Block extends Rectangle {
 
         setTranslateX(this.posX * Main.block_size);
         setTranslateY(this.posY * Main.block_size);
+
     }
 
 

@@ -36,6 +36,20 @@ public class Main extends Application {
         animationTimer.start();
 
         Scene scene = new Scene(root);
+
+        scene.setOnKeyPressed(keyEvent -> {
+            switch (keyEvent.getCode()){
+                case UP: field.snake.switchDirection(Direction.UP);
+                    break;
+                case DOWN: field.snake.switchDirection(Direction.DOWN);
+                    break;
+                case LEFT: field.snake.switchDirection(Direction.LEFT);
+                    break;
+                case RIGHT: field.snake.switchDirection(Direction.RIGHT);
+                    break;
+            }
+                });
+
         stage.setScene(scene);
         stage.setTitle("Snake game");
         stage.setResizable(false);
