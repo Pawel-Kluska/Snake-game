@@ -1,36 +1,84 @@
 package com.pawell.snakegame;
 
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 
-public class Block extends Circle {
+import static com.pawell.snakegame.Direction.LEFT;
+
+public class Block extends Rectangle {
     int posX, posY;
     int oldPosX, oldPosY;
-
+    int maxX, maxY;
     Block previous;
+    Direction direction = LEFT;
 
-    public Block(int posX, int posY, Block previous){
-        super(Main.block_size/2);
+    public Block(int posX, int posY, Block previous, Field field){
+        super(Main.block_size, Main.block_size);
         this.posX = posX;
         this.posY = posY;
         this.previous = previous;
+        maxX = field.getWid();
+        maxY = field.getHei();
 
         setTranslateX(this.posX * Main.block_size);
         setTranslateY(this.posY * Main.block_size);
     }
 
-    public int getPosX() {
-        return posX;
+
+    public void update(){
+        oldPosX = posX;
+        oldPosY = posY;
+
+        if(previous == null){
+            switch (direction){
+                case UP:
+                    moveUp();
+                    break;
+                case DOWN:
+                    moveDown();
+                    break;
+                case LEFT:
+                    moveLeft();
+                    break;
+                case RIGHT:
+                    moveRight();
+                    break;
+            }
+        }
+        else{
+            posX = previous.oldPosX;
+            posY = previous.oldPosY;
+        }
+        updatePosition();
     }
 
-    public void setPosX(int posX) {
-        this.posX = posX;
+    public void moveUp(){
+        posY--;
+        if(posY < 0)
+            posY = maxY - 1;
     }
 
-    public int getPosY() {
-        return posY;
+    public void moveDown(){
+        posY++;
+        if(posY >= maxY)
+            posY = 0;
     }
 
-    public void setPosY(int posY) {
-        this.posY = posY;
+    public void moveLeft(){
+        posX--;
+        if(posX < 0)
+            posX = maxX - 1;
     }
+
+    public void moveRight(){
+        posX++;
+        if(posX >= maxX)
+            posX = 0;
+    }
+
+    public void updatePosition(){
+        setTranslateX(posX * Main.block_size);
+        setTranslateY(posY * Main.block_size);
+    }
+
 }
