@@ -39,13 +39,21 @@ public class Main extends Application {
 
         scene.setOnKeyPressed(keyEvent -> {
             switch (keyEvent.getCode()){
-                case UP: field.snake.switchDirection(Direction.UP);
+                case UP:
+                    if(field.snake.getDirection() != Direction.DOWN)
+                    field.snake.setDirection(Direction.UP);
                     break;
-                case DOWN: field.snake.switchDirection(Direction.DOWN);
+                case DOWN:
+                    if(field.snake.getDirection() != Direction.UP)
+                    field.snake.setDirection(Direction.DOWN);
                     break;
-                case LEFT: field.snake.switchDirection(Direction.LEFT);
+                case LEFT:
+                    if(field.snake.getDirection() != Direction.RIGHT)
+                    field.snake.setDirection(Direction.LEFT);
                     break;
-                case RIGHT: field.snake.switchDirection(Direction.RIGHT);
+                case RIGHT:
+                    if(field.snake.getDirection() != Direction.LEFT)
+                    field.snake.setDirection(Direction.RIGHT);
                     break;
             }
                 });

@@ -8,6 +8,8 @@ public class Field extends Pane {
     private final int height;
     Snake snake;
 
+    int score = 0;
+    Food f;
 
     public Field(int width, int height){
         this.width = width;
@@ -20,12 +22,27 @@ public class Field extends Pane {
                 new Border(
                 new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID,
                 null, new BorderWidths(5))));
+
+        addFood();
     }
 
     public void update(){
         for(Block block: snake.blocks){
             block.update();
         }
+
+        if(isEatenFood(f)){
+            score += 10;
+            addFood();
+            addNewBlock();
+        }
+    }
+
+    public void addNewBlock(){
+        Block b = new Block(snake.tail.oldPosX, snake.tail.oldPosY, snake.tail, this);
+        snake.tail = b;
+        snake.blocks.add(b);
+        addBlock(b);
     }
 
     public void addSnake(Snake snake){
@@ -34,6 +51,20 @@ public class Field extends Pane {
             addBlock(block);
         }
     }
+
+    public void addFood(){
+        int x = (int) (Math.random() * width);
+        int y = (int) (Math.random() * height);
+        Food food = new Food(x, y);
+        getChildren().add(food);
+        getChildren().remove(f);
+        f = food;
+    }
+
+    public boolean isEatenFood(Food f){
+        return snake.head.posX == f.posX && snake.head.posY == f.posY;
+    }
+
 
     public void addBlock(Block block){
         getChildren().add(block);

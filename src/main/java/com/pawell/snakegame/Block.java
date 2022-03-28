@@ -1,7 +1,5 @@
 package com.pawell.snakegame;
 
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 import static com.pawell.snakegame.Direction.LEFT;
