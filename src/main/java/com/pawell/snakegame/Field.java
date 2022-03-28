@@ -38,6 +38,16 @@ public class Field extends Pane {
         }
     }
 
+    public boolean isDead(){
+        for(Block b : snake.blocks){
+            if(b != snake.head){
+                if(b.posX == snake.head.posX && b.posY == snake.head.posY)
+                    return true;
+            }
+        }
+        return false;
+    }
+
     public void addNewBlock(){
         Block b = new Block(snake.tail.oldPosX, snake.tail.oldPosY, snake.tail, this);
         snake.tail = b;
