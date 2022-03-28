@@ -13,7 +13,7 @@ public class Food extends Rectangle {
 
         setTranslateX(this.posX * Main.block_size);
         setTranslateY(this.posY * Main.block_size);
-        setFill(Color.AQUA);
+        setFill(Color.RED);
 
     }
 

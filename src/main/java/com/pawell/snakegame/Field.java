@@ -17,10 +17,10 @@ public class Field extends Pane {
 
         setMinSize(width * Main.block_size, height * Main.block_size);
         setBackground(new Background(new BackgroundFill(
-                Color.WHITE, null, null)));
+                Color.LIGHTGREEN, null, null)));
         setBorder(
                 new Border(
-                new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID,
+                new BorderStroke(Color.GREEN, BorderStrokeStyle.SOLID,
                 null, new BorderWidths(5))));
 
         addFood();
